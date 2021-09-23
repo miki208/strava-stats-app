@@ -15,5 +15,5 @@
 
 $router->get('/', function () use ($router) {
     //return $router->app->version();
-    echo env(DB_CONNECTION);
+    echo env('DB_CONNECTION');
 });
