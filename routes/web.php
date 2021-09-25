@@ -18,7 +18,7 @@ use Log;
 */
 
 $router->get(config('strava-params.webhook-callback-url'), function (Request $request) use ($router) {
-    echo $request->has('hub.mode') . $request->has('hub.challenge'); . $request->has('hub.verify_token') . $request->has('mod');
+    echo $request->has('hub.mode') . $request->has('hub.challenge') . $request->has('hub.verify_token') . $request->has('mod');
 
     if(!$request->has(['hub.mode', 'hub.challenge', 'hub.verify_token']))
         return response()->json([], Response::HTTP_BAD_REQUEST, [], JSON_UNESCAPED_SLASHES);
