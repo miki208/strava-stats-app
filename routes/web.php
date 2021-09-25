@@ -36,6 +36,6 @@ $router->post(config('strava-params.webhook-callback-url'), function (Request $r
 $router->get('/register', function (Request $request) use ($router) {
     return view('register', [
         'client_id' => config('strava-params.client-id'),
-        'redirect_uri' => config('strava-params.authorization-callback-url')
+        'redirect_uri' => env('APP_URL') . config('strava-params.authorization-callback-url')
     ]);
 });
