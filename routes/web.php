@@ -22,10 +22,10 @@ $router->get(config('strava-params.webhook-callback-url'), function (Request $re
 
     if(!$request->has(['hub.mode', 'hub.challenge', 'hub.verify_token']))
         return response()->json([], Response::HTTP_BAD_REQUEST, [], JSON_UNESCAPED_SLASHES);
-
+    echo "1";
     if($request->get('hub.mode') != 'subscribe' || $request->get('hub.verify_token') != config('strava-params.verify-token'))
         return response()->json([], Response::HTTP_BAD_REQUEST, [], JSON_UNESCAPED_SLASHES);
-
+echo "2";
     return response()->json([
         'hub.challenge' => $request->get('hub.challenge')
     ], Response::HTTP_OK, [], JSON_UNESCAPED_SLASHES);
