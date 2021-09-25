@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Log;
+
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -13,7 +17,18 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    //return $router->app->version();
-    echo env('DB_CONNECTION');
+$router->get(config('strava-params.webhook-callback-url'), function (Request $request) use ($router) {
+    if(!$request->has(['hub.mode', 'hub.challenge', 'hub.verify_token']))
+        return response()->json([], Response::HTTP_BAD_REQUEST, [], JSON_UNESCAPED_SLASHES);
+
+    if($request->get('hub.mode') != 'subscribe' || $request->get('hub.verify_token') != config('strava-params.verify-token'))
+        return response()->json([], Response::HTTP_BAD_REQUEST, [], JSON_UNESCAPED_SLASHES);
+
+    return response()->json([
+        'hub.challenge' => $request->get('hub.challenge')
+    ], Response::HTTP_OK, [], JSON_UNESCAPED_SLASHES);
+});
+
+$router->post(config('strava-params.webhook-callback-url'), function (Request $request) use ($router) {
+    Log::info($request);
 });
