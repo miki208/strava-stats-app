@@ -23,7 +23,7 @@
 
 <body>
     <div id="image-wrapper">
-        {{ HTML::image('img/strava_logo.png', 'Strava external account sync', array('id' => 'strava-logo')) }}
+        <img id="strava-logo" src="img/strava_logo.png" alt="Strava external account sync"/>
     </div>
 </body>
 
