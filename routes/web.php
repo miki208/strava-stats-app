@@ -33,6 +33,6 @@ $router->post(config('strava-params.webhook-callback-url'), function (Request $r
     Log::info($request);
 });
 
-$router->post('/register', function (Request $request) use ($router) {
+$router->get('/register', function (Request $request) use ($router) {
     return view('register');
 });
