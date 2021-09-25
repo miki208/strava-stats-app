@@ -6,25 +6,16 @@
     <title>Registration page</title>
 
     <style>
-        #image-wrapper
-        {
-            width: 300px;
-            height: 95px;
-            background: #eee;
-            text-align: center;
-            line-height: 95px;
-        }
-
         #strava-logo {
-            vertical-align: middle;
+            width: 30%;
+            margin: auto;
+            display: block;
         }
     </style>
 </head>
 
 <body>
-    <div id="image-wrapper">
-        <img id="strava-logo" src="img/strava_logo.png" alt="Strava external account sync"/>
-    </div>
+    <img id="strava-logo" src="img/strava_logo.png" alt="Strava external account sync"/>
 </body>
 
 </html>
